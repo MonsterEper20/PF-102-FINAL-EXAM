@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Notification -->
+  <div id="notification" class="notification hidden"></div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>tasks.</h1>
+      <button id="darkModeToggle" class="icon-btn" title="Toggle dark mode">◐</button>
+    </header>
+
+    <!-- Stats -->
+    <div class="stats">
+      <span id="statTotal">0 total</span>
+      <span class="dot">·</span>
+      <span id="statPending">0 pending</span>
+      <span class="dot">·</span>
+      <span id="statDone">0 done</span>
+    </div>
+
+    <!-- Add Task Form -->
+    <form id="taskForm" class="task-form">
+      <input type="text" id="taskInput" placeholder="Add a task…" autocomplete="off" required />
+      <select id="categorySelect">
+        <option value="">Category</option>
+      </select>
+      <select id="prioritySelect">
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+        <option value="low">Low</option>
+      </select>
+      <button type="submit" id="addBtn">Add</button>
+    </form>
+
+    <!-- Controls -->
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search tasks…" />
+      <select id="filterCategory">
+        <option value="">All categories</option>
+      </select>
+      <button id="exportBtn" class="text-btn">Export JSON</button>
+    </div>
+
+    <!-- Loading -->
+    <div id="loadingState" class="loading hidden">Loading categories…</div>
+
+    <!-- Task List -->
+    <ul id="taskList" class="task-list"></ul>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="empty-state">No tasks yet. Add one above.</div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
