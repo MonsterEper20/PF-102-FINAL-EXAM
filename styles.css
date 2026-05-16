@@ -270,7 +270,22 @@ select {
   border-radius: 20px;
   background: var(--border);
   color: var(--muted);
+  font-weight: 500;
 }
+/* Per-category colors */
+.category-badge[data-cat="Work"]     { background: #dbeafe; color: #1e40af; }
+.category-badge[data-cat="Personal"] { background: #fce7f3; color: #9d174d; }
+.category-badge[data-cat="School"]   { background: #d1fae5; color: #065f46; }
+.category-badge[data-cat="Health"]   { background: #ffe4e6; color: #9f1239; }
+.category-badge[data-cat="Shopping"] { background: #fef3c7; color: #92400e; }
+.category-badge[data-cat="Other"]    { background: #ede9fe; color: #4c1d95; }
+
+body.dark .category-badge[data-cat="Work"]     { background: #1e3a5f; color: #93c5fd; }
+body.dark .category-badge[data-cat="Personal"] { background: #4a1942; color: #f9a8d4; }
+body.dark .category-badge[data-cat="School"]   { background: #064e3b; color: #6ee7b7; }
+body.dark .category-badge[data-cat="Health"]   { background: #4c1d1d; color: #fca5a5; }
+body.dark .category-badge[data-cat="Shopping"] { background: #451a03; color: #fcd34d; }
+body.dark .category-badge[data-cat="Other"]    { background: #2e1065; color: #c4b5fd; }
 
 /* Timer */
 .timer-display {
