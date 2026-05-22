@@ -1,8 +1,3 @@
-/* ════════════════════════════════════════════
-   Task Manager — script.js
-   Covers: Tiers 1-4 (all features)
-   ════════════════════════════════════════════ */
-
 /* ── State ── */
 let tasks = [];
 let categories = [];
@@ -27,10 +22,6 @@ const notification   = document.getElementById('notification');
 const darkToggle     = document.getElementById('darkModeToggle');
 const exportBtn      = document.getElementById('exportBtn');
 const loadingState   = document.getElementById('loadingState');
-
-/* ══════════════════════════════════════════
-   TIER 1 — Core Features
-   ══════════════════════════════════════════ */
 
 /* Feature 8: DOM Selection (querySelector, getElementById used throughout)
    Feature 5: Event Listeners
@@ -110,9 +101,6 @@ function toggleComplete(id) {
   showNotification(task.completed ? 'Task completed ✓' : 'Task reopened');
 }
 
-/* ══════════════════════════════════════════
-   TIER 1+2 — Rendering (Feature 4, 10, 14)
-   ══════════════════════════════════════════ */
 
 function renderTasks() {
   updateStats(); // Feature 14: task counter
@@ -182,9 +170,7 @@ function updateStats() {
   statDone.textContent    = `${done} done`;
 }
 
-/* ══════════════════════════════════════════
-   TIER 2 — Feature 9: Inline Editing
-   ══════════════════════════════════════════ */
+
 
 function startEditing(id, span) {
   const task = getTask(id);
@@ -212,9 +198,6 @@ function startEditing(id, span) {
   });
 }
 
-/* ══════════════════════════════════════════
-   TIER 2 — Feature 12+13: Search + Debounce
-   ══════════════════════════════════════════ */
 
 /* Feature 13: Debounce pattern */
 function debounce(fn, delay) {
@@ -238,9 +221,6 @@ filterCategory.addEventListener('change', function (event) {
   renderTasks();
 });
 
-/* ══════════════════════════════════════════
-   TIER 2 — Feature 15+16: Notifications & Loading
-   ══════════════════════════════════════════ */
 
 /* Feature 15: Auto-dismissing notification */
 function showNotification(msg) {
@@ -256,14 +236,6 @@ function showNotification(msg) {
 function setLoading(on) {
   loadingState.classList.toggle('hidden', !on);
 }
-
-/* ══════════════════════════════════════════
-   TIER 3 — Feature 19+20+21: Fetch + async/await + try/catch
-   ══════════════════════════════════════════ */
-
-/* Feature 20: async/await pattern
-   Feature 19: Fetch categories from API (JSONPlaceholder /todos — extract unique category-like labels)
-   Feature 21: try/catch error handling */
 
 // Fixed category list — stable, meaningful, used consistently everywhere
 const FIXED_CATEGORIES = ['Work', 'Personal', 'School', 'Health', 'Shopping', 'Other'];
@@ -295,10 +267,6 @@ function populateCategoryDropdowns() {
   categorySelect.innerHTML = `<option value="">Category</option>${opts}`;
   filterCategory.innerHTML = `<option value="">All categories</option>${opts}`;
 }
-
-/* ══════════════════════════════════════════
-   TIER 3 — Feature 17+18: Countdown Timers
-   ══════════════════════════════════════════ */
 
 function handleTimer(id, action) {
   const task = getTask(id);
@@ -362,9 +330,6 @@ function formatTime(seconds) {
   return `${m}:${s}`;
 }
 
-/* ══════════════════════════════════════════
-   TIER 4 — Feature 22: Dark Mode Toggle
-   ══════════════════════════════════════════ */
 
 darkToggle.addEventListener('click', function () {
   document.body.classList.toggle('dark');
@@ -373,10 +338,7 @@ darkToggle.addEventListener('click', function () {
   showNotification(isDark ? 'Dark mode on' : 'Light mode on');
 });
 
-/* ══════════════════════════════════════════
-   TIER 4 — Feature 23: localStorage Persistence
-   Wrapped in Promise as required
-   ══════════════════════════════════════════ */
+
 
 function saveToLocalStorage() {
   // Wrap in Promise (as per spec: Feature 23)
@@ -409,9 +371,7 @@ function loadFromLocalStorage() {
   });
 }
 
-/* ══════════════════════════════════════════
-   TIER 4 — Feature 25: Export as JSON
-   ══════════════════════════════════════════ */
+
 
 exportBtn.addEventListener('click', function () {
   const exportable = tasks.map(({ timerInterval, ...rest }) => rest);
@@ -425,9 +385,7 @@ exportBtn.addEventListener('click', function () {
   showNotification('Tasks exported as JSON');
 });
 
-/* ══════════════════════════════════════════
-   Boot
-   ══════════════════════════════════════════ */
+
 
 async function init() {
   // Restore dark mode
